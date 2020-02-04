@@ -141,3 +141,22 @@ main {
   width:35%;
   height:100vh;
 }
+
+.active-button {
+  /* display:none; */
+}
+
+.study-btn {
+  border: #B3FD78 3px solid;
+  color: #B3FD78;
+}
+
+.meditate-btn {
+  border: #C278FD 3px solid;
+  color: #C278FD;
+}
+
+.excercise-btn {
+  border: #FD8078 3px solid;
+  color: #FD8078;
+}
