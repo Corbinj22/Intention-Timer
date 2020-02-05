@@ -159,9 +159,9 @@ main {
   color: #C278FD;
 }
 
-.excercise-btn.active {
+.exercise-btn.active {
   border: #FD8078 3px solid;
-  color: #FD8078;
+  color: #FD8078
 }
 
 .hidden {
