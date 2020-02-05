@@ -73,6 +73,9 @@ main {
   color: #CBC9Cf;
   font-size: 1em;
 }
+.category-btn img {
+  pointer-events: none;
+}
 
 .non-active-img {
   width: 1.3em;
@@ -142,21 +145,25 @@ main {
   height:100vh;
 }
 
-.active-button {
-  /* display:none; */
-}
+/* .active-button {
+  display:none;
+} */
 
-.study-btn {
+.study-btn.active {
   border: #B3FD78 3px solid;
   color: #B3FD78;
 }
 
-.meditate-btn {
+.meditate-btn.active {
   border: #C278FD 3px solid;
   color: #C278FD;
 }
 
-.excercise-btn {
+.excercise-btn.active {
   border: #FD8078 3px solid;
   color: #FD8078;
+}
+
+.hidden {
+  /* display: none; */
 }
