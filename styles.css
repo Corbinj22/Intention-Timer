@@ -156,10 +156,6 @@ main {
   height:100vh;
 }
 
-/* .active-button {
-  display:none;
-} */
-
 .study-btn.active {
   border: #B3FD78 3px solid;
   color: #B3FD78;
@@ -174,6 +170,7 @@ main {
   border: #FD8078 3px solid;
   color: #FD8078
 }
+
 
 .warning-img {
   display: inline;
@@ -194,3 +191,4 @@ main {
 .hidden {
   /* display: none; */
 }
+

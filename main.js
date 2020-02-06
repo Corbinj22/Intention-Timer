@@ -2,6 +2,9 @@ var studyButton = document.querySelector('.study-btn');
 var meditateButton = document.querySelector('.meditate-btn');
 var excerciseButton = document.querySelector('.exercise-btn');
 var buttonBox = document.querySelector('.button-box');
+var timeBox = document.querySelector('.time-box-sizing');
+var minutesInput = document.querySelector('.minutes-input');
+var secondsInput = document.querySelector('.seconds-input');
 var zeroStateBtnArray = [studyButton, meditateButton, excerciseButton];
 var zeroStateWarningBtn = document.getElementById('no-input-alert');
 var accomplishInput = document.querySelector('.accomplish-input');
@@ -12,7 +15,7 @@ var inputArray = [accomplishInput, minutesInput, secondsInput];
 
 
 startBtn.addEventListener('click', inputAlert)
-
+timeBox.addEventListener('input', checkInput);
 buttonBox.addEventListener('click', function() {
   toggleButton(event);
 });
@@ -31,6 +34,10 @@ function inputAlert() {
      zeroStateWarningBtn.classList.remove('toggle-alert');
      }
    }
+  
+function checkInput(event) {
+  minutesInput.value = minutesInput.value.replace(/[^0-9]/, '');
+  secondsInput.value = secondsInput.value.replace(/[^0-9]/, '');
 }
 
 function removeActiveClass(currentCategory) {
