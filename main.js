@@ -2,12 +2,20 @@ var studyButton = document.querySelector('.study-btn');
 var meditateButton = document.querySelector('.meditate-btn');
 var excerciseButton = document.querySelector('.exercise-btn');
 var buttonBox = document.querySelector('.button-box');
+var timeBox = document.querySelector('.time-box-sizing');
+var minutesInput = document.querySelector('.minutes-input');
+var secondsInput = document.querySelector('.seconds-input');
 var zeroStateBtnArray = [studyButton, meditateButton, excerciseButton];
 
-
+timeBox.addEventListener('input', checkInput);
 buttonBox.addEventListener('click', function() {
   toggleButton(event);
 });
+
+function checkInput(event) {
+  minutesInput.value = minutesInput.value.replace(/[^0-9]/, '');
+  secondsInput.value = secondsInput.value.replace(/[^0-9]/, '');
+}
 
 function removeActiveClass(currentCategory) {
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
