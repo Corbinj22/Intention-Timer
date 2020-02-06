@@ -6,6 +6,16 @@
 
 }
 
+/* this is the main page with input */
+.main-page {
+
+}
+
+/* this is the timer page */
+.timer-page {
+
+}
+
 header {
   border: 1px black solid;
   width:100%;
@@ -73,6 +83,7 @@ main {
   color: #CBC9Cf;
   font-size: 1em;
 }
+
 .category-btn img {
   pointer-events: none;
 }
@@ -160,6 +171,7 @@ main {
   color: #FD8078
 }
 
+
 .inserted-html {
   display:flex;
   flex-direction: column;
@@ -177,4 +189,25 @@ main {
   width: 50%;
   margin: auto;
   border: 4px green solid;
+}
+
+
+.warning-img {
+  display: inline;
+  width: 4%;
+}
+
+#no-input-alert {
+  color: #EFB7EC;
+  font-size: 1em;
+  padding-top: .7em;
+
+}
+
+.toggle-alert {
+  display: none;
+}
+
+.hidden {
+  /* display: none; */
 }
