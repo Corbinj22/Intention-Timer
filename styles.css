@@ -145,10 +145,6 @@ main {
   height:100vh;
 }
 
-/* .active-button {
-  display:none;
-} */
-
 .study-btn.active {
   border: #B3FD78 3px solid;
   color: #B3FD78;
@@ -162,8 +158,4 @@ main {
 .exercise-btn.active {
   border: #FD8078 3px solid;
   color: #FD8078
-}
-
-.hidden {
-  /* display: none; */
 }
