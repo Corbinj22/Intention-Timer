@@ -159,3 +159,22 @@ main {
   border: #FD8078 3px solid;
   color: #FD8078
 }
+
+.inserted-html {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%
+}
+.users-activity-choice{
+  font-size: large;
+}
+
+.time-button {
+  border-radius: 50%;
+  height: 30em;
+  width: 50%;
+  margin: auto;
+  border: 4px green solid;
+}

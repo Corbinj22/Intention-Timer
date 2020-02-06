@@ -5,12 +5,18 @@ var buttonBox = document.querySelector('.button-box');
 var timeBox = document.querySelector('.time-box-sizing');
 var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
+var sumbitButton = document.querySelector('.start-btn');
+var leftColumn = document.querySelector('.column-left');
+
 var zeroStateBtnArray = [studyButton, meditateButton, excerciseButton];
 
+sumbitButton.addEventListener('click', function() {
+  changeLeftBox();
+})
+
+
 timeBox.addEventListener('input', checkInput);
-buttonBox.addEventListener('click', function() {
-  toggleButton(event);
-});
+buttonBox.addEventListener('click', toggleButton);
 
 function checkInput(event) {
   minutesInput.value = minutesInput.value.replace(/[^0-9]/, '');
@@ -39,3 +45,9 @@ function toggleButton(event) {
 	}
 	removeActiveClass(currentCategory)
 }
+
+
+// function changeLeftBox() {
+//   console.log(1);
+//   leftColumn.innerHTML = "";
+// }
