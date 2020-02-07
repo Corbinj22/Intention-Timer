@@ -2,33 +2,26 @@ var studyButton = document.querySelector('.study-btn');
 var meditateButton = document.querySelector('.meditate-btn');
 var excerciseButton = document.querySelector('.exercise-btn');
 var buttonBox = document.querySelector('.button-box');
-var timeBox = document.querySelector('.time-box-sizing');
+var timeBox = document.querySelector('.left-column-time-box');
 var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
 var sumbitButton = document.querySelector('.start-btn');
 var leftColumn = document.querySelector('.column-left');
-
-var zeroStateBtnArray = [studyButton, meditateButton, excerciseButton];
 var zeroStateWarningBtn = document.getElementById('no-input-alert');
 var accomplishInput = document.querySelector('.accomplish-input');
 var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
-var startBtn = document.querySelector('.start-btn');
+var zeroStateBtnArray = [studyButton, meditateButton, excerciseButton];
 var inputArray = [accomplishInput, minutesInput, secondsInput];
 
-
-feature/change-leftbox-userData
 sumbitButton.addEventListener('click', function() {
   changeLeftBox();
+  inputAlert();
 })
 
-
-
-startBtn.addEventListener('click', inputAlert)
-
+// submitButton.addEventListener('click', inputAlert)
 timeBox.addEventListener('input', checkInput);
 buttonBox.addEventListener('click', toggleButton);
-
 
 function inputAlert() {
   var isNotSelected = null;
@@ -37,14 +30,16 @@ function inputAlert() {
         isNotSelected = true;
     }
   }
+}
    for(var i = 0; i < inputArray.length; i++) {
      if(inputArray[i].value === '' || isNotSelected ) {
        //empty input field OR !== class of .active then display alert below:
      zeroStateWarningBtn.classList.remove('toggle-alert');
-     }
-   }
+    } else {
+      console.log(1);
+  }
  }
- 
+
 function checkInput(event) {
   minutesInput.value = minutesInput.value.replace(/[^0-9]/, '');
   secondsInput.value = secondsInput.value.replace(/[^0-9]/, '');
@@ -72,7 +67,6 @@ function toggleButton(event) {
 	}
 	removeActiveClass(currentCategory)
 }
-
 
 function changeLeftBox() {
   leftColumn.innerHTML = "";
