@@ -43,7 +43,8 @@ function inputAlert() {
      zeroStateWarningBtn.classList.remove('toggle-alert');
      }
    }
-  
+ }
+ 
 function checkInput(event) {
   minutesInput.value = minutesInput.value.replace(/[^0-9]/, '');
   secondsInput.value = secondsInput.value.replace(/[^0-9]/, '');
