@@ -184,11 +184,45 @@ main {
 
 }
 
+.column-right h2{
+  color: #CBC9Cf;
+  padding-top: .4em;
+  padding-left: .8em;
+
+}
+
+.display-center {
+  color: #CBC9Cf;
+  text-align: center;
+}
+
+/* //toggles input alert// */
+
 .toggle-alert {
   display: none;
 }
 
+.past-activities-card {
+  width: 90%;
+  height: 20%;
+  margin: 0 5%;
+  background-color: #46424D;
+  /* border: 2px solid white; */
+  border-radius: 5px;
+}
+
+#activity-activities-card {
+  color: #CBC9Cf;
+  padding-top: 1%;
+  padding-left: 1%;
+}
+
+ #time-input, #activity-input{
+   color: #CBC9Cf;
+ }
+
+
+
 .hidden {
   /* display: none; */
 }
-
