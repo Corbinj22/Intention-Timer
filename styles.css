@@ -64,12 +64,6 @@ main {
   padding-bottom: 2%;
 }
 
-/* .activity-selection {
-  height: 5em;
-  width: 100%;
-  background-color: green;
-} */
-
 .category-btn {
   display: flex;
   flex-direction: column;
@@ -179,16 +173,29 @@ main {
   text-align: center;
   height: 100%
 }
-.users-activity-choice{
-  font-size: large;
+.users-activity-choice {
+  font-weight: bolder;
+}
+
+.timer {
+  font-size: 4em;
+  font-weight: bolder;
 }
 
 .time-button {
   border-radius: 50%;
-  height: 30em;
-  width: 50%;
+  height: 6em;
+  width: 30%;
   margin: auto;
   border: 4px green solid;
+  font-size: 35px;
+  background-color: #46424D;
+  color: white;
+  margin-bottom: 13%;
+}
+
+.hidden {
+  display:none;
 }
 
 

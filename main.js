@@ -73,7 +73,15 @@ function toggleButton(event) {
 }
 
 
-// function changeLeftBox() {
-//   console.log(1);
-//   leftColumn.innerHTML = "";
-// }
+function changeLeftBox() {
+  leftColumn.innerHTML = "";
+  leftColumn.insertAdjacentHTML('afterbegin',
+  `<h3>Current Activity</h3>
+  <div class="user-activity-box">
+    <div class="inserted-html">
+     <p class="users-activity-choice">Insert Users Choice here</p>
+     <p class = "timer">5:00</p>
+     <button class="time-button" type="button" name="button">Start</button>
+   </div>
+  </div>`);
+}
