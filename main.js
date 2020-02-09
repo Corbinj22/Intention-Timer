@@ -7,41 +7,18 @@ var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
 var sumbitButton = document.querySelector('.start-btn');
 var leftColumn = document.querySelector('.column-left');
-var zeroStateWarningBtn = document.getElementById('no-input-alert');
+var zeroStateWarningBtn = document.querySelector('.no-input-alert');
 var accomplishInput = document.querySelector('.accomplish-input');
 var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
-var zeroStateBtnArray = [studyButton, meditateButton, excerciseButton];
-var inputArray = [accomplishInput, minutesInput, secondsInput];
 var outputAccomplisment = document.querySelector('.users-activity-choice');
 var timeStartButton = document.querySelector('.time-button');
+var zeroStateBtnArray = [studyButton, meditateButton, excerciseButton];
+var inputArray = [accomplishInput, minutesInput, secondsInput];
 
-
-sumbitButton.addEventListener('click', function() {
-  changeLeftBox();
-  inputAlert();
-})
-
-// submitButton.addEventListener('click', inputAlert)
+sumbitButton.addEventListener('click', inputAlert);
 timeBox.addEventListener('input', checkInput);
 buttonBox.addEventListener('click', toggleButton);
-
-function inputAlert() {
-  var isNotSelected = null;
-  for(var i = 0; i < zeroStateBtnArray.length; i++) {
-    if(!zeroStateBtnArray[i].classList.contains("active")) {
-        isNotSelected = true;
-    }
-  }
-}
-   for(var i = 0; i < inputArray.length; i++) {
-     if(inputArray[i].value === '' || isNotSelected ) {
-       //empty input field OR !== class of .active then display alert below:
-     zeroStateWarningBtn.classList.remove('toggle-alert');
-    } else {
-      console.log(1);
-  }
- }
 
 function checkInput(event) {
   minutesInput.value = minutesInput.value.replace(/[^0-9]/, '');
@@ -71,21 +48,14 @@ function toggleButton(event) {
 	removeActiveClass(currentCategory)
 }
 
-
-
-
-
-
-
-
 function inputAlert() {
-      var isSelected = null
-      var filledInput = true
+  var isSelected = null;
+  var filledInput = true;
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if(zeroStateBtnArray[i].classList.contains("active")) {
-          isSelected = true;
-        }
-  }
+      isSelected = true;
+    }
+}
 
   for(var i = 0; i < inputArray.length; i++) {
     if((inputArray[i].value === '') || !isSelected) {
@@ -93,14 +63,10 @@ function inputAlert() {
       filledInput = false;
     }
   }
-
     if(filledInput && isSelected) {
-      changeLeftBox();
-
+    changeLeftBox();
   }
 }
-
-
 
 function changeLeftBox() {
     var activityChoice = accomplishInput.value;
