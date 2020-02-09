@@ -9,7 +9,7 @@
     <header>
       <h2>INTENTION TIMER</h2>
     </header>
-    <main class="main-page">
+    <main>
       <!-- start left section -->
       <section class="column-left">
         <h3>New Activity</h3>
@@ -31,7 +31,7 @@
           </div>
           <p class = "left-box-global-p">What would you like to accomplish during this time?</p>
           <input class="full-width-input accomplish-input" type="text" name="accomplishForm" onsubmit="return validateForm()" value="">
-          <p class="toggle-alert" id="no-input-alert"><img class="warning-img" src="assets/warning.svg"> A description is required.</p>
+          <p class="toggle-alert no-input-alert"><img class="warning-img" src="assets/warning.svg"> A description is required.</p>
           <div class="left-column-time-box">
             <div class="time-box-sizing">
               <p class = "left-box-global-p">Minutes</p>
@@ -56,19 +56,9 @@
           <p id = "time-input">5 MIN 0 SECONDS</p>
           <p id = "activity-input">Deep Breathing</p>
         </div>
-
       </section>
       <!-- end right section -->
     </main>
-
-    <!-- <header>
-      <h2>INTENTION TIMER</h2>
-    </header>
-    <main class="timer-page">
-      <section class="column-left">
-        <p class="activity-text-timer"></p>
-        <p class="timer-start"></p> -->
-
   <script src="main.js"></script>
   </body>
 </html>
