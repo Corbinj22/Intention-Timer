@@ -7,7 +7,7 @@ var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
 var sumbitButton = document.querySelector('.start-btn');
 var leftColumn = document.querySelector('.column-left');
-
+var timeStartButton = document.querySelector('.time-button');
 var zeroStateBtnArray = [studyButton, meditateButton, excerciseButton];
 var zeroStateWarningBtn = document.getElementById('no-input-alert');
 var accomplishInput = document.querySelector('.accomplish-input');
@@ -15,6 +15,8 @@ var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
 var startBtn = document.querySelector('.start-btn');
 var inputArray = [accomplishInput, minutesInput, secondsInput];
+var outputAccomplisment = document.querySelector('.users-activity-choice');
+
 
 
 
@@ -73,100 +75,45 @@ function toggleButton(event) {
 }
 
 
-// function changeLeftBox() {
-//   leftColumn.innerHTML = "";
-//   leftColumn.insertAdjacentHTML('afterbegin',
-//   `<h3>Current Activity</h3>
-//   <div class="user-activity-box">
-//     <div class="inserted-html">
-//      <p class="users-activity-choice">Insert Users Choice here</p>
-//      <p class = "timer">5:00</p>
-//      <button class="time-button" type="button" name="button">Start</button>
-//    </div>
-//   </div>`);
-// }
 
-// function inputAlert(){
-//   var accomplish = accomplishInput.value.length;
-//   var minutes = minutesInput.value.length;
-//   var seconds = secondsInput.value.length;
-//   var isNotSelected = null;
-//
-//   for(var i = 0; i < zeroStateBtnArray.length; i++) {
-//   if(!zeroStateBtnArray[i].classList.contains("active"))
-//       isNotSelected = true;
-//   }
-//   if(accomplish < 1) {
-//     accomplish = false;
-//   }
-//   if(minutes < 1) {
-//     minutes = false;
-//   }
-//   if(seconds < 1) {
-//     seconds = false;
-//   }
-//   if(!accomplish || !minutes || !seconds)
 
-// function inputAlert(){
-//   var accomplish = accomplishInput.value.length;
-//   var minutes = minutesInput.value.length;
-//   var seconds = secondsInput.value.length;
-//   var isNotSelected = null;
-//   if(accomplish === 0){
-//     accomplish = "Empty";
-//   }
-//   if(minutes === 0){
-//     minutes = "Empty";
-//   }
-//   if(seconds === 0){
-//     seconds = "Empty";
-//   }
-//   for(var i = 0; i < zeroStateBtnArray.length; i++) {
-//     if(!zeroStateBtnArray[i].classList.contains("active")) {
-//       isNotSelected = "Empty";
-//           }
-//   }
-//   if(seconds !== "Empty" || minutes !== "Empty" || accomplish
-//   !== "Empty" || isNotSelected !== "Empty") {
-//     changeLeftBox();
-//   } else {
-//     zeroStateWarningBtn.classList.remove('toggle-alert');
-//   }
-// }
+
+
+
 
 function inputAlert() {
       var isSelected = null
       var filledInput = true
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if(zeroStateBtnArray[i].classList.contains("active")) {
-      console.log("button", zeroStateBtnArray[i]);
           isSelected = true;
-
         }
   }
 
   for(var i = 0; i < inputArray.length; i++) {
     if((inputArray[i].value === '') || !isSelected) {
-      console.log("value",inputArray[i].value);
-      console.log(isSelected);
       zeroStateWarningBtn.classList.remove('toggle-alert');
       filledInput = false;
     }
   }
-  //for filledInput = true (isSelected=true no empty strings inputArray)
+
     if(filledInput && isSelected) {
       changeLeftBox();
+
   }
 }
 
+
+
 function changeLeftBox() {
+    var activityChoice = accomplishInput.value;
        leftColumn.innerHTML = "";
        leftColumn.insertAdjacentHTML('afterbegin',
        `<h3>Current Activity</h3>
        <div class="user-activity-box">
          <div class="inserted-html">
-          <p class="users-activity-choice">Insert Users Choice here</p>
-          <p class = "timer">5:00</p>
+          <p class="users-activity-choice">${activityChoice}</p>
+          <p class ="timer"></p>
           <button class="time-button" type="button" name="button">Start</button>
         </div>
        </div>`);
