@@ -142,6 +142,7 @@ main {
 .study-btn.active {
   border: #B3FD78 3px solid;
   color: #B3FD78;
+
 }
 
 .meditate-btn.active {
@@ -176,12 +177,13 @@ main {
   height: 6em;
   width: 30%;
   margin: auto;
-  border: 4px green solid;
+  /* border: 4px solid green; */
   font-size: 35px;
   background-color: #46424D;
   color: white;
   margin-bottom: 13%;
 }
+
 
 .hidden {
   display:none;
@@ -241,4 +243,17 @@ main {
 
 .hidden {
   /* display: none; */
+}
+
+
+.time-button-study {
+  border: 4px solid #B3FD78;
+}
+
+.time-button-exercise {
+  border: 4px solid #FD8078;
+}
+
+.time-button-meditate {
+  border: 4px solid #C278FD;
 }

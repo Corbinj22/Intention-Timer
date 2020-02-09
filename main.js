@@ -13,6 +13,9 @@ var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
 var zeroStateBtnArray = [studyButton, meditateButton, excerciseButton];
 var inputArray = [accomplishInput, minutesInput, secondsInput];
+var outputAccomplisment = document.querySelector('.users-activity-choice');
+var timeStartButton = document.querySelector('.time-button');
+
 
 sumbitButton.addEventListener('click', function() {
   changeLeftBox();
@@ -68,15 +71,47 @@ function toggleButton(event) {
 	removeActiveClass(currentCategory)
 }
 
-function changeLeftBox() {
-  leftColumn.innerHTML = "";
-  leftColumn.insertAdjacentHTML('afterbegin',
-  `<h3>Current Activity</h3>
-  <div class="user-activity-box">
-    <div class="inserted-html">
-     <p class="users-activity-choice">Insert Users Choice here</p>
-     <p class = "timer">5:00</p>
-     <button class="time-button" type="button" name="button">Start</button>
-   </div>
-  </div>`);
+
+
+
+
+
+
+
+function inputAlert() {
+      var isSelected = null
+      var filledInput = true
+  for(var i = 0; i < zeroStateBtnArray.length; i++) {
+    if(zeroStateBtnArray[i].classList.contains("active")) {
+          isSelected = true;
+        }
+  }
+
+  for(var i = 0; i < inputArray.length; i++) {
+    if((inputArray[i].value === '') || !isSelected) {
+      zeroStateWarningBtn.classList.remove('toggle-alert');
+      filledInput = false;
+    }
+  }
+
+    if(filledInput && isSelected) {
+      changeLeftBox();
+
+  }
 }
+
+
+
+function changeLeftBox() {
+    var activityChoice = accomplishInput.value;
+       leftColumn.innerHTML = "";
+       leftColumn.insertAdjacentHTML('afterbegin',
+       `<h3>Current Activity</h3>
+       <div class="user-activity-box">
+         <div class="inserted-html">
+          <p class="users-activity-choice">${activityChoice}</p>
+          <p class ="timer"></p>
+          <button class="time-button" type="button" name="button">Start</button>
+        </div>
+       </div>`);
+     }
