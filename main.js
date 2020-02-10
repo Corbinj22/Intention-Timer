@@ -1,6 +1,6 @@
 var studyButton = document.querySelector('.study-btn');
 var meditateButton = document.querySelector('.meditate-btn');
-var excerciseButton = document.querySelector('.exercise-btn');
+var exerciseButton = document.querySelector('.exercise-btn');
 var buttonBox = document.querySelector('.button-box');
 var timeBox = document.querySelector('.left-column-time-box');
 var minutesInput = document.querySelector('.minutes-input');
@@ -13,7 +13,9 @@ var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
 var outputAccomplisment = document.querySelector('.users-activity-choice');
 var timeStartButton = document.querySelector('.time-button');
-var zeroStateBtnArray = [studyButton, meditateButton, excerciseButton];
+var counter = 0;
+
+var zeroStateBtnArray = [studyButton, meditateButton, exerciseButton];
 var inputArray = [accomplishInput, minutesInput, secondsInput];
 
 sumbitButton.addEventListener('click', inputAlert);
@@ -53,10 +55,9 @@ function inputAlert() {
   var filledInput = true;
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if(zeroStateBtnArray[i].classList.contains("active")) {
-      isSelected = true;
-    }
+    isSelected = true;
+  }
 }
-
   for(var i = 0; i < inputArray.length; i++) {
     if((inputArray[i].value === '') || !isSelected) {
       zeroStateWarningBtn.classList.remove('toggle-alert');
@@ -69,15 +70,45 @@ function inputAlert() {
 }
 
 function changeLeftBox() {
-    var activityChoice = accomplishInput.value;
-       leftColumn.innerHTML = "";
-       leftColumn.insertAdjacentHTML('afterbegin',
-       `<h3>Current Activity</h3>
-       <div class="user-activity-box">
-         <div class="inserted-html">
-          <p class="users-activity-choice">${activityChoice}</p>
-          <p class ="timer"></p>
-          <button class="time-button" type="button" name="button">Start</button>
-        </div>
-       </div>`);
-     }
+  var activityChoice = accomplishInput.value;
+  var minutesTime = minutesInput.value;
+  var secondsTime = secondsInput.value;
+  leftColumn.innerHTML = "";
+  leftColumn.insertAdjacentHTML('afterbegin',`
+  <h3>Current Activity</h3>
+  <div class="user-activity-box">
+    <div class="inserted-html">
+      <p class="users-activity-choice">${activityChoice}</p>
+      <p class ="timer">${minutesTime}:${secondsTime}</p>
+      <button class="time-button" type="button" onclick="timerStart()" name="button">Start</button>
+    </div>
+  </div>`);
+  for(var i = 0; i < zeroStateBtnArray.length; i++) {
+    if(zeroStateBtnArray[i].classList.contains('active')) {
+      timeStartButton = document.querySelector('.time-button');
+      timeStartButton.classList.add(`time-button-${zeroStateBtnArray[i].dataset.category}`);
+    }
+  }
+}
+
+function convertSeconds(s) {
+  var min = Math.floor(s / 60);
+  var sec = s % 60;
+  console.log(`${min}:${sec}`);
+  return `${min}:${sec}`;
+}
+
+function updateTime(totalTime) {
+  var timer = document.querySelector('.timer');
+  counter++;
+  timer.innerHTML = convertSeconds(totalTime - counter);
+}
+
+function timerStart(){
+  var seconds = secondsInput.value;
+  var minutes = minutesInput.value;
+  var totalTime = (minutes*60) + seconds;
+  var timer = document.querySelector('.timer');
+  setInterval(updateTime, 1000);
+  updateTime(totalTime);
+}
