@@ -14,6 +14,9 @@ var secondsInput = document.querySelector('.seconds-input');
 var outputAccomplisment = document.querySelector('.users-activity-choice');
 var timeStartButton = document.querySelector('.time-button');
 var counter = 0;
+var logBtn = document.querySelector('.log-activity');
+
+
 
 var zeroStateBtnArray = [studyButton, meditateButton, exerciseButton];
 var inputArray = [accomplishInput, minutesInput, secondsInput];
@@ -73,6 +76,9 @@ function changeLeftBox() {
   var activityChoice = accomplishInput.value;
   var minutesTime = minutesInput.value;
   var secondsTime = secondsInput.value;
+  if(secondsTime.value < 10) {
+    secondsTime = `0${secondsTime}`;
+  }
   leftColumn.innerHTML = "";
   leftColumn.insertAdjacentHTML('afterbegin',`
   <h3>Current Activity</h3>
@@ -81,6 +87,7 @@ function changeLeftBox() {
       <p class="users-activity-choice">${activityChoice}</p>
       <p class ="timer">${minutesTime}:${secondsTime}</p>
       <button class="time-button" type="button" onclick="timerStart()" name="button">Start</button>
+      <button class="log-activity hidden"type="button">Log Activity</button>
     </div>
   </div>`);
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
@@ -96,14 +103,19 @@ function timerStart(){
   var minutes = parseInt(minutesInput.value);
   var totalTime = (minutes*60) + seconds;
   var timer = document.querySelector('.timer');
+  var logBtn = document.querySelector('.log-activity');
   var timeTracker = setInterval(function () {
     counter++;
     var s = totalTime - counter;
     var min = Math.floor(s / 60);
     var sec = s % 60;
     timer.innerHTML = `${min}:${sec}`;
+    if(sec < 10) {
+      timer.innerHTML = `${min}:0${sec}`;
+    }
     if(s === 0) {
       clearInterval(timeTracker);
+      logBtn.classList.remove('hidden');
     }
   }, 1000);
 }
