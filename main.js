@@ -13,9 +13,8 @@ var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
 var outputAccomplisment = document.querySelector('.users-activity-choice');
 var timeStartButton = document.querySelector('.time-button');
-var counter = 0;
 var logBtn = document.querySelector('.log-activity');
-
+var counter = 0;
 
 
 var zeroStateBtnArray = [studyButton, meditateButton, exerciseButton];
@@ -99,6 +98,7 @@ function changeLeftBox() {
 }
 
 function timerStart() {
+  document.querySelector('.time-button').disabled = true;
   var seconds = parseInt(secondsInput.value);
   var minutes = parseInt(minutesInput.value);
   var totalTime = (minutes*60) + seconds;
