@@ -76,7 +76,7 @@ function changeLeftBox() {
   var activityChoice = accomplishInput.value;
   var minutesTime = minutesInput.value;
   var secondsTime = secondsInput.value;
-  if(secondsTime.value < 10) {
+  if(secondsInput.value < 10) {
     secondsTime = `0${secondsTime}`;
   }
   leftColumn.innerHTML = "";
