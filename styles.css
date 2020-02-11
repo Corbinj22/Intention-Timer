@@ -65,6 +65,7 @@ main {
   background-color: #46424D;
   color: #CBC9Cf;
   font-size: 1em;
+  outline: none;
 }
 
 .category-btn img {
@@ -78,6 +79,9 @@ main {
 
 .user-activity-box input {
   padding: 1%;
+  outline: none;
+  font-size: 2em;
+  color: white;
 }
 
 .button-box {
@@ -96,14 +100,20 @@ main {
   background-color: #46424D;
   border: none;
   border-bottom: 1px solid white;
+  outline: none;
+  font-size: 2em;
+  color: white;
 }
 
 .half-width-input {
   width: 100%;
-  margin-top: 2em;
+  margin-top: 1em;
   background-color: #46424D;
   border: none;
   border-bottom: 1px solid white;
+  outline: none;
+  font-size: 2em;
+  color: white;
 
 }
 
@@ -111,7 +121,7 @@ main {
   width:100%;
   display: flex;
   justify-content: space-between;
-  padding-top: 5em;
+  padding-top: 4em;
 }
 
 .time-box-sizing{
@@ -125,6 +135,9 @@ main {
   border-radius: 3px;
   margin: 3em 0 2.5em 30.5em;
   font-size: 1em;
+  display: flex;
+  justify-content: center;
+  margin-left: 69%;
 }
 
 .column-right {
@@ -210,7 +223,7 @@ main {
 
 .past-activities-card {
   width: 90%;
-  height: 20%;
+  height: 5em;
   margin: 0 5%;
   background-color: #46424D;
   border-radius: 5px;
@@ -228,14 +241,17 @@ main {
 
 .time-button-study {
   border: 4px solid #B3FD78;
+  outline: none;
 }
 
 .time-button-exercise {
   border: 4px solid #FD8078;
+  outline: none;
 }
 
 .time-button-meditate {
   border: 4px solid #C278FD;
+  outline: none;
 }
 
 .log-activity {
