@@ -98,7 +98,7 @@ function changeLeftBox() {
   }
 }
 
-function timerStart(){
+function timerStart() {
   var seconds = parseInt(secondsInput.value);
   var minutes = parseInt(minutesInput.value);
   var totalTime = (minutes*60) + seconds;
@@ -116,6 +116,8 @@ function timerStart(){
     if(s === 0) {
       clearInterval(timeTracker);
       logBtn.classList.remove('hidden');
+      timeStartButton.innerHTML = `${"COMPLETE!"}`;
+
     }
   }, 1000);
 }
