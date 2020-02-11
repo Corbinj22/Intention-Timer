@@ -91,24 +91,19 @@ function changeLeftBox() {
   }
 }
 
-function convertSeconds(s) {
-  var min = Math.floor(s / 60);
-  var sec = s % 60;
-  console.log(`${min}:${sec}`);
-  return `${min}:${sec}`;
-}
-
-function updateTime(totalTime) {
-  var timer = document.querySelector('.timer');
-  counter++;
-  timer.innerHTML = convertSeconds(totalTime - counter);
-}
-
 function timerStart(){
-  var seconds = secondsInput.value;
-  var minutes = minutesInput.value;
+  var seconds = parseInt(secondsInput.value);
+  var minutes = parseInt(minutesInput.value);
   var totalTime = (minutes*60) + seconds;
   var timer = document.querySelector('.timer');
-  setInterval(updateTime, 1000);
-  updateTime(totalTime);
+  var timeTracker = setInterval(function () {
+    counter++;
+    var s = totalTime - counter;
+    var min = Math.floor(s / 60);
+    var sec = s % 60;
+    timer.innerHTML = `${min}:${sec}`;
+    if(s === 0) {
+      clearInterval(timeTracker);
+    }
+  }, 1000);
 }
