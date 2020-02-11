@@ -23,6 +23,9 @@ var inputArray = [accomplishInput, minutesInput, secondsInput];
 sumbitButton.addEventListener('click', inputAlert);
 timeBox.addEventListener('input', checkInput);
 buttonBox.addEventListener('click', toggleButton);
+leftColumn.addEventListener('click', function() {
+  timerStart(event);
+});
 
 function checkInput(event) {
   minutesInput.value = minutesInput.value.replace(/[^0-9]/, '');
@@ -85,7 +88,7 @@ function changeLeftBox() {
     <div class="inserted-html">
       <p class="users-activity-choice">${activityChoice}</p>
       <p class ="timer">${minutesTime}:${secondsTime}</p>
-      <button class="time-button" type="button" onclick="timerStart()" name="button">Start</button>
+      <button class="time-button" type="button" name="button">Start</button>
       <button class="log-activity hidden"type="button">Log Activity</button>
     </div>
   </div>`);
@@ -98,6 +101,7 @@ function changeLeftBox() {
 }
 
 function timerStart() {
+  if(event.target.classList.contains('time-button')) {
   document.querySelector('.time-button').disabled = true;
   var seconds = parseInt(secondsInput.value);
   var minutes = parseInt(minutesInput.value);
@@ -120,4 +124,5 @@ function timerStart() {
 
     }
   }, 1000);
+}
 }
