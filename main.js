@@ -139,11 +139,15 @@ function logActivity(event) {
       <p id = "activity-input">${activityChoice}</p>
       <div class="bar"></div>
     </div>`);
-  }
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if(zeroStateBtnArray[i].classList.contains('active')) {
       barColor = document.querySelector('.bar');
       barColor.classList.add(`bar-${zeroStateBtnArray[i].dataset.category}`);
+      }
     }
+    leftColumn.innerHTML = "";
+    leftColumn.insertAdjacentHTML('afterbegin',`
+    <button class="create-new-activity">CREATE A NEW ACTIVITY</button>`);
+
   }
 }
