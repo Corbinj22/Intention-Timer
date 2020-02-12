@@ -15,15 +15,19 @@ var outputAccomplisment = document.querySelector('.users-activity-choice');
 var timeStartButton = document.querySelector('.time-button');
 var counter = 0;
 var logBtn = document.querySelector('.log-activity');
-
-
-
+var rightColumn = document.querySelector('.column-right');
+var pastActivitiesCard = document.querySelector('.past-activities-card');
 var zeroStateBtnArray = [studyButton, meditateButton, exerciseButton];
 var inputArray = [accomplishInput, minutesInput, secondsInput];
+
 
 sumbitButton.addEventListener('click', inputAlert);
 timeBox.addEventListener('input', checkInput);
 buttonBox.addEventListener('click', toggleButton);
+leftColumn.addEventListener('click', function() {
+  logActivity(event)
+});
+
 
 function checkInput(event) {
   minutesInput.value = minutesInput.value.replace(/[^0-9]/, '');
@@ -117,7 +121,29 @@ function timerStart() {
       clearInterval(timeTracker);
       logBtn.classList.remove('hidden');
       timeStartButton.innerHTML = `${"COMPLETE!"}`;
-
     }
   }, 1000);
+}
+
+function logActivity(event) {
+  var activityChoice = accomplishInput.value;
+  var minutesTime = minutesInput.value;
+  var secondsTime = secondsInput.value;
+  if (event.target.classList.contains('log-activity')) {
+    rightColumn.innerHTML = "";
+    rightColumn.insertAdjacentHTML('afterbegin',`
+    <h2>Past Activities</h2>
+    <div class = "past-activities-card">
+      <h3 id = "activity-label">${'Meditate'}</h3>
+      <p id = "time-input">${minutesTime} MIN ${secondsTime} SECONDS</p>
+      <p id = "activity-input">${activityChoice}</p>
+      <div class="bar"></div>
+    </div>`);
+  }
+  for(var i = 0; i < zeroStateBtnArray.length; i++) {
+    if(zeroStateBtnArray[i].classList.contains('active')) {
+      barColor = document.querySelector('.bar');
+      barColor.classList.add(`bar-${zeroStateBtnArray[i].dataset.category}`);
+    }
+  }
 }
