@@ -1,26 +1,26 @@
-// global variables
+// global button variables
 var studyButton = document.querySelector('.study-btn');
 var meditateButton = document.querySelector('.meditate-btn');
 var exerciseButton = document.querySelector('.exercise-btn');
 var buttonBox = document.querySelector('.button-box');
-var timeBox = document.querySelector('.left-column-time-box');
-var minutesInput = document.querySelector('.minutes-input');
-var secondsInput = document.querySelector('.seconds-input');
 var sumbitButton = document.querySelector('.start-btn');
-var leftColumn = document.querySelector('.column-left');
+var timeStartButton = document.querySelector('.time-button');
+var logButton = document.querySelector('.log-activity');
 var zeroStateWarningButton = document.querySelector('.no-input-alert');
+
+// global variables
+var timeBox = document.querySelector('.left-column-time-box');
+var rightColumn = document.querySelector('.column-right');
+var leftColumn = document.querySelector('.column-left');
 var accomplishInput = document.querySelector('.accomplish-input');
 var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
-var timeStartButton = document.querySelector('.time-button');
-var counter = 0;
-var logBtn = document.querySelector('.log-activity');
-var rightColumn = document.querySelector('.column-right');
-var pastActivitiesCard = document.querySelector('.past-activities-card');
+
+// arrays for buttons and inputs
 var zeroStateBtnArray = [studyButton, meditateButton, exerciseButton];
 var inputArray = [accomplishInput, minutesInput, secondsInput];
 
-//Global  Event Listeners
+//Global Event Listeners
 sumbitButton.addEventListener('click', inputAlert);
 timeBox.addEventListener('input', checkInput);
 buttonBox.addEventListener('click', toggleButton);
@@ -30,6 +30,7 @@ leftColumn.addEventListener('click', function() {
   toggleInitialPage(event);
 });
 
+// function to only allow numbers in minutes/seconds input
 function checkInput(event) {
   minutesInput.value = minutesInput.value.replace(/[^0-9]/, '');
   secondsInput.value = secondsInput.value.replace(/[^0-9]/, '');
@@ -119,7 +120,7 @@ function timerStart() {
     var minutes = parseInt(minutesInput.value);
     var totalTime = (minutes*60) + seconds;
     var timer = document.querySelector('.timer');
-    var logBtn = document.querySelector('.log-activity');
+    var logButton = document.querySelector('.log-activity');
     var timeTracker = setInterval(function() {
       counter++;
       var s = totalTime - counter;
@@ -131,7 +132,7 @@ function timerStart() {
       };
       if (s === 0) {
         clearInterval(timeTracker);
-        logBtn.classList.remove('hidden');
+        logButton.classList.remove('hidden');
         timeStartButton.innerHTML = `${"COMPLETE!"}`;
       }
     }, 1000);
@@ -162,7 +163,7 @@ function logActivity(event) {
       <p id = "activity-input">${activityChoice}</p>
       <div class="bar"></div>
     </div>`);
-    
+
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if(zeroStateBtnArray[i].classList.contains('active')) {
       barColor = document.querySelector('.bar');
