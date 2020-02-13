@@ -28,7 +28,10 @@ leftColumn.addEventListener('click', function() {
 });
 leftColumn.addEventListener('click', function () {
   logActivity(event);
-})
+});
+leftColumn.addEventListener('click', function() {
+  toggleInitialPage(event);
+});
 
 
 function checkInput(event) {
@@ -56,7 +59,7 @@ function toggleButton(event) {
     classList.add('active');
 		buttonImg.src = `assets/${currentCategory}-active.svg`;
 	}
-	removeActiveClass(currentCategory)
+	removeActiveClass(currentCategory);
 };
 
 function inputAlert() {
@@ -74,7 +77,6 @@ function inputAlert() {
       filledInput = false;
     }
   };
-
     if (filledInput && isSelected) {
       changeLeftBox();
   }
@@ -99,7 +101,6 @@ function changeLeftBox() {
         <button class="log-activity hidden"type="button">Log Activity</button>
       </div>
     </div>`);
-
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if (zeroStateBtnArray[i].classList.contains('active')) {
       timeStartButton = document.querySelector('.time-button');
@@ -123,11 +124,9 @@ function timerStart() {
       var min = Math.floor(s / 60);
       var sec = s % 60;
       timer.innerHTML = `${min}:${sec}`;
-
       if (sec < 10) {
         timer.innerHTML = `${min}:0${sec}`;
       };
-
       if (s === 0) {
         clearInterval(timeTracker);
         logBtn.classList.remove('hidden');
@@ -141,12 +140,20 @@ function logActivity(event) {
   var activityChoice = accomplishInput.value;
   var minutesTime = minutesInput.value;
   var secondsTime = secondsInput.value;
+  var activityLabel = null;
+  if (studyButton.classList.contains('active')) {
+    activityLabel = "STUDY";
+  } else if (exerciseButton.classList.contains('active')) {
+    activityLabel = "EXERCISE";
+  } else if (meditateButton.classList.contains('active')) {
+    activityLabel = "MEDITATE"
+  }
   if (event.target.classList.contains('log-activity')) {
     rightColumn.innerHTML = "";
     rightColumn.insertAdjacentHTML('afterbegin',`
     <h2>Past Activities</h2>
     <div class = "past-activities-card">
-      <h3 id = "activity-label">${'Meditate'}</h3>
+      <h3 id = "activity-label">${activityLabel}</h3>
       <p id = "time-input">${minutesTime} MIN ${secondsTime} SECONDS</p>
       <p id = "activity-input">${activityChoice}</p>
       <div class="bar"></div>
@@ -160,6 +167,44 @@ function logActivity(event) {
     leftColumn.innerHTML = "";
     leftColumn.insertAdjacentHTML('afterbegin',`
     <button class="create-new-activity">CREATE A NEW ACTIVITY</button>`);
+  }
+}
 
+function toggleInitialPage () {
+  if (event.target.classList.contains('create-new-activity')) {
+    leftColumn.innerHTML = "";
+    leftColumn.insertAdjacentHTML('afterbegin',`
+      <h3>New Activity</h3>
+       <div class="user-activity-box">
+        <p class="left-box-global-p">Select a category:</p>
+        <div class="button-box">
+          <div class="activity-selection">
+            <button class = "category-btn study-btn" type="button" data-category="study" name="button">
+            <img class="non-active-img" src="assets/study.svg">Study</button>
+          </div>
+          <div class="activity-selection">
+            <button class = "category-btn meditate-btn" type="button" data-category='meditate' name="button">
+            <img class="non-active-img" src="assets/meditate.svg">Meditate</button>
+          </div>
+          <div class="activity-selection">
+            <button class = "category-btn exercise-btn" type="button" data-category='exercise' name="button">
+            <img class="non-active-img" src="assets/exercise.svg">Excercise</button>
+          </div>
+        </div>
+        <p class = "left-box-global-p">What would you like to accomplish during this time?</p>
+        <input class="full-width-input accomplish-input" type="text" name="accomplishForm" onsubmit="return validateForm()" value="">
+        <p class="toggle-alert no-input-alert"><img class="warning-img" src="assets/warning.svg"> A description is required.</p>
+        <div class="left-column-time-box">
+          <div class="time-box-sizing">
+            <p class = "left-box-global-p">Minutes</p>
+            <input class="half-width-input minutes-input" type="text" name="minutesForm" onsubmit="return validateForm()" value="">
+          </div>
+          <div class="time-box-sizing">
+            <p class = "left-box-global-p">Seconds</p>
+            <input class="half-width-input seconds-input" type="text" name="secondsForm" onsubmit="return validateForm()" value="">
+          </div>
+        </div>
+        <button class="start-btn" type="button" name="button">START ACTIVITY</button>
+      </div>`);
   }
 }
