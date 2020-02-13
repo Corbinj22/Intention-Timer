@@ -1,3 +1,4 @@
+// global variables
 var studyButton = document.querySelector('.study-btn');
 var meditateButton = document.querySelector('.meditate-btn');
 var exerciseButton = document.querySelector('.exercise-btn');
@@ -19,26 +20,22 @@ var pastActivitiesCard = document.querySelector('.past-activities-card');
 var zeroStateBtnArray = [studyButton, meditateButton, exerciseButton];
 var inputArray = [accomplishInput, minutesInput, secondsInput];
 
-
+//Global  Event Listeners
 sumbitButton.addEventListener('click', inputAlert);
 timeBox.addEventListener('input', checkInput);
 buttonBox.addEventListener('click', toggleButton);
 leftColumn.addEventListener('click', function() {
   timerStart(event);
-});
-leftColumn.addEventListener('click', function () {
   logActivity(event);
-});
-leftColumn.addEventListener('click', function() {
   toggleInitialPage(event);
 });
-
 
 function checkInput(event) {
   minutesInput.value = minutesInput.value.replace(/[^0-9]/, '');
   secondsInput.value = secondsInput.value.replace(/[^0-9]/, '');
 };
 
+// removes active class (border & color) on buttons
 function removeActiveClass(currentCategory) {
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if (zeroStateBtnArray[i].dataset.category !== currentCategory) {
@@ -48,6 +45,7 @@ function removeActiveClass(currentCategory) {
   }
 };
 
+// function allows toggle on/off of active buttons
 function toggleButton(event) {
 	var currentCategory = event.target.dataset.category;
 	var buttonImg = event.target.firstElementChild;
@@ -62,6 +60,7 @@ function toggleButton(event) {
 	removeActiveClass(currentCategory);
 };
 
+// checks that user has met all input requirements
 function inputAlert() {
   var isSelected = null;
   var filledInput = true;
