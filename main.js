@@ -81,6 +81,7 @@ function inputAlert() {
   }
 };
 
+//changes inital page to countdown timer
 function changeLeftBox() {
   var activityChoice = accomplishInput.value;
   var minutesTime = minutesInput.value;
@@ -100,14 +101,16 @@ function changeLeftBox() {
         <button class="log-activity hidden"type="button">Log Activity</button>
       </div>
     </div>`);
+
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if (zeroStateBtnArray[i].classList.contains('active')) {
       timeStartButton = document.querySelector('.time-button');
       timeStartButton.classList.add(`time-button-${zeroStateBtnArray[i].dataset.category}`);
     }
-  }
+  };
 };
 
+// starts countdown on desired activities and timer
 function timerStart() {
   if (event.target.classList.contains('time-button')) {
     document.querySelector('.time-button').disabled = true;
@@ -135,6 +138,7 @@ function timerStart() {
   }
 };
 
+// logs activity to the right column on the page
 function logActivity(event) {
   var activityChoice = accomplishInput.value;
   var minutesTime = minutesInput.value;
@@ -146,7 +150,8 @@ function logActivity(event) {
     activityLabel = "EXERCISE";
   } else if (meditateButton.classList.contains('active')) {
     activityLabel = "MEDITATE"
-  }
+  };
+
   if (event.target.classList.contains('log-activity')) {
     rightColumn.innerHTML = "";
     rightColumn.insertAdjacentHTML('afterbegin',`
@@ -157,6 +162,7 @@ function logActivity(event) {
       <p id = "activity-input">${activityChoice}</p>
       <div class="bar"></div>
     </div>`);
+    
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if(zeroStateBtnArray[i].classList.contains('active')) {
       barColor = document.querySelector('.bar');
@@ -166,9 +172,10 @@ function logActivity(event) {
     leftColumn.innerHTML = "";
     leftColumn.insertAdjacentHTML('afterbegin',`
     <button class="create-new-activity">CREATE A NEW ACTIVITY</button>`);
-  }
-}
+  };
+};
 
+// allows for user to navigate back to the original page after logging prior activity
 function toggleInitialPage () {
   if (event.target.classList.contains('create-new-activity')) {
     leftColumn.innerHTML = "";
@@ -205,5 +212,5 @@ function toggleInitialPage () {
         </div>
         <button class="start-btn" type="button" name="button">START ACTIVITY</button>
       </div>`);
-  }
-}
+  };
+};
