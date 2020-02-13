@@ -1,44 +1,42 @@
+// global button variables
 var studyButton = document.querySelector('.study-btn');
 var meditateButton = document.querySelector('.meditate-btn');
 var exerciseButton = document.querySelector('.exercise-btn');
 var buttonBox = document.querySelector('.button-box');
-var timeBox = document.querySelector('.left-column-time-box');
-var minutesInput = document.querySelector('.minutes-input');
-var secondsInput = document.querySelector('.seconds-input');
 var sumbitButton = document.querySelector('.start-btn');
-var leftColumn = document.querySelector('.column-left');
+var timeStartButton = document.querySelector('.time-button');
+var logButton = document.querySelector('.log-activity');
 var zeroStateWarningButton = document.querySelector('.no-input-alert');
+
+// global variables
+var timeBox = document.querySelector('.left-column-time-box');
+var rightColumn = document.querySelector('.column-right');
+var leftColumn = document.querySelector('.column-left');
 var accomplishInput = document.querySelector('.accomplish-input');
 var minutesInput = document.querySelector('.minutes-input');
 var secondsInput = document.querySelector('.seconds-input');
-var timeStartButton = document.querySelector('.time-button');
-var counter = 0;
-var logBtn = document.querySelector('.log-activity');
-var rightColumn = document.querySelector('.column-right');
-var pastActivitiesCard = document.querySelector('.past-activities-card');
+
+// arrays for buttons and inputs
 var zeroStateBtnArray = [studyButton, meditateButton, exerciseButton];
 var inputArray = [accomplishInput, minutesInput, secondsInput];
 
-
+//Global Event Listeners
 sumbitButton.addEventListener('click', inputAlert);
 timeBox.addEventListener('input', checkInput);
 buttonBox.addEventListener('click', toggleButton);
 leftColumn.addEventListener('click', function() {
   timerStart(event);
-});
-leftColumn.addEventListener('click', function () {
   logActivity(event);
-});
-leftColumn.addEventListener('click', function() {
   toggleInitialPage(event);
 });
 
-
+// function to only allow numbers in minutes/seconds input
 function checkInput(event) {
   minutesInput.value = minutesInput.value.replace(/[^0-9]/, '');
   secondsInput.value = secondsInput.value.replace(/[^0-9]/, '');
 };
 
+// removes active class (border & color) on buttons
 function removeActiveClass(currentCategory) {
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if (zeroStateBtnArray[i].dataset.category !== currentCategory) {
@@ -48,6 +46,7 @@ function removeActiveClass(currentCategory) {
   }
 };
 
+// function allows toggle on/off of active buttons
 function toggleButton(event) {
 	var currentCategory = event.target.dataset.category;
 	var buttonImg = event.target.firstElementChild;
@@ -62,6 +61,7 @@ function toggleButton(event) {
 	removeActiveClass(currentCategory);
 };
 
+// checks that user has met all input requirements
 function inputAlert() {
   var isSelected = null;
   var filledInput = true;
@@ -82,6 +82,7 @@ function inputAlert() {
   }
 };
 
+//changes inital page to countdown timer
 function changeLeftBox() {
   var activityChoice = accomplishInput.value;
   var minutesTime = minutesInput.value;
@@ -101,14 +102,16 @@ function changeLeftBox() {
         <button class="log-activity hidden"type="button">Log Activity</button>
       </div>
     </div>`);
+
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if (zeroStateBtnArray[i].classList.contains('active')) {
       timeStartButton = document.querySelector('.time-button');
       timeStartButton.classList.add(`time-button-${zeroStateBtnArray[i].dataset.category}`);
     }
-  }
+  };
 };
 
+// starts countdown on desired activities and timer
 function timerStart() {
   if (event.target.classList.contains('time-button')) {
     document.querySelector('.time-button').disabled = true;
@@ -117,7 +120,7 @@ function timerStart() {
     var minutes = parseInt(minutesInput.value);
     var totalTime = (minutes*60) + seconds;
     var timer = document.querySelector('.timer');
-    var logBtn = document.querySelector('.log-activity');
+    var logButton = document.querySelector('.log-activity');
     var timeTracker = setInterval(function() {
       counter++;
       var s = totalTime - counter;
@@ -129,13 +132,14 @@ function timerStart() {
       };
       if (s === 0) {
         clearInterval(timeTracker);
-        logBtn.classList.remove('hidden');
+        logButton.classList.remove('hidden');
         timeStartButton.innerHTML = `${"COMPLETE!"}`;
       }
     }, 1000);
   }
 };
 
+// logs activity to the right column on the page
 function logActivity(event) {
   var activityChoice = accomplishInput.value;
   var minutesTime = minutesInput.value;
@@ -147,7 +151,8 @@ function logActivity(event) {
     activityLabel = "EXERCISE";
   } else if (meditateButton.classList.contains('active')) {
     activityLabel = "MEDITATE"
-  }
+  };
+
   if (event.target.classList.contains('log-activity')) {
     rightColumn.innerHTML = "";
     rightColumn.insertAdjacentHTML('afterbegin',`
@@ -158,6 +163,7 @@ function logActivity(event) {
       <p id = "activity-input">${activityChoice}</p>
       <div class="bar"></div>
     </div>`);
+
   for(var i = 0; i < zeroStateBtnArray.length; i++) {
     if(zeroStateBtnArray[i].classList.contains('active')) {
       barColor = document.querySelector('.bar');
@@ -167,9 +173,10 @@ function logActivity(event) {
     leftColumn.innerHTML = "";
     leftColumn.insertAdjacentHTML('afterbegin',`
     <button class="create-new-activity">CREATE A NEW ACTIVITY</button>`);
-  }
-}
+  };
+};
 
+// allows for user to navigate back to the original page after logging prior activity
 function toggleInitialPage () {
   if (event.target.classList.contains('create-new-activity')) {
     leftColumn.innerHTML = "";
@@ -206,5 +213,5 @@ function toggleInitialPage () {
         </div>
         <button class="start-btn" type="button" name="button">START ACTIVITY</button>
       </div>`);
-  }
-}
+  };
+};
