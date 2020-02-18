@@ -170,10 +170,20 @@ function logActivity(event) {
       barColor.classList.add(`bar-${zeroStateBtnArray[i].dataset.category}`);
       }
     }
+    colorBarMatch();
     leftColumn.innerHTML = "";
     leftColumn.insertAdjacentHTML('afterbegin',`
     <button class="create-new-activity">CREATE A NEW ACTIVITY</button>`);
   };
+};
+
+function colorBarMatch() {
+for(var i = 0; i < zeroStateBtnArray.length; i++) {
+  if(zeroStateBtnArray[i].classList.contains('active')) {
+    barColor = document.querySelector('.bar');
+    barColor.classList.add(`bar-${zeroStateBtnArray[i].dataset.category}`);
+    }
+  }
 };
 
 // allows for user to navigate back to the original page after logging prior activity
